@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="./src/style.css" />
+    <title>Frontend Mentor | Todo app</title>
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <div class="container centered">
+        <div class="title-theme-box">
+          <p class="list-title">todo</p>
+          <button class="btn-theme">
+            <img src="./images/icon-sun.svg" alt="change theme button - sun" />
+          </button>
+        </div>
+
+        <div class="todo todo-new">
+          <button class="checkbox">
+            <img src="./images/icon-check.svg" alt="check image" />
+          </button>
+          <input type="text" class="todo-text" placeholder="Enter a task" />
+          <button class="btn-delete-todo">
+            <img
+              src="./images/icon-cross.svg"
+              alt="X icon inside todo delete button"
+            />
+          </button>
+        </div>
+
+        <section class="todo-list">
+          <ul>
+            <li class="todo todo-list-item">
+              <button class="checkbox">
+                <img src="./images/icon-check.svg" alt="check image" />
+              </button>
+              <input type="text" class="todo-text" value="helllo" />
+              <button class="btn-delete-todo">
+                <img
+                  src="./images/icon-cross.svg"
+                  alt="X icon inside todo delete button"
+                />
+              </button>
+            </li>
+          </ul>
+          <div class="control-list">
+            <p><span class="todos-left">5</span> todos left</p>
+            <div class="btns-filter">
+              <button class="active">all</button>
+              <button>active</button>
+              <button>completed</button>
+            </div>
+            <button class="btn-clear">clear completed</button>
+          </div>
+        </section>
+      </div>
+    </main>
+    <p>Drag and drop to render list</p>
+    <footer>
+      coded by
+      <a href="https://github.com/Yasin-Fathollahi">Yasin Fathollahi</a>
+    </footer>
+  </body>
+</html>
