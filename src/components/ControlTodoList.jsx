@@ -1,7 +1,9 @@
-import { useState } from 'react';
-
-export default function ControlTodoList({ todosLeft, onSetTodos }) {
-  const [activeTab, setActiveTab] = useState('all');
+export default function ControlTodoList({
+  todosLeft,
+  onSetTodos,
+  activeTab,
+  onSetActiveTab,
+}) {
   function stateDeepCopy(prevState) {
     return [
       ...prevState.map((todo) => {
@@ -18,7 +20,7 @@ export default function ControlTodoList({ todosLeft, onSetTodos }) {
   }
 
   function filterVisibleTodos(filter) {
-    setActiveTab(filter);
+    onSetActiveTab(filter);
     onSetTodos((prevTodos) => {
       let updatedTodos = stateDeepCopy(prevTodos);
       updatedTodos.forEach((todo) => {

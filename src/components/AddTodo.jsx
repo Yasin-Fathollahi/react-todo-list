@@ -1,5 +1,5 @@
 import { useState } from 'react';
-export default function AddTodo({ onAddTodo }) {
+export default function AddTodo({ onAddTodo, activeTab }) {
   const [todoValue, setTodoValue] = useState('');
   const arrow = String.fromCodePoint('08594');
 
@@ -10,7 +10,14 @@ export default function AddTodo({ onAddTodo }) {
   function handleAddTodo() {
     if (todoValue.length > 0) {
       onAddTodo((prevTodos) => {
-        return [{ value: todoValue, done: false, hidden: false }, ...prevTodos];
+        return [
+          {
+            value: todoValue,
+            done: false,
+            hidden: activeTab === 'completed' ? true : false,
+          },
+          ...prevTodos,
+        ];
       });
       setTodoValue('');
     }

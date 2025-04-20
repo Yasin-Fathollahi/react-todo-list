@@ -4,10 +4,13 @@ import AddTodo from './components/AddTodo.jsx';
 import Todo from './components/Todo.jsx';
 import ControlTodoList from './components/ControlTodoList.jsx';
 import Title from './components/Title.jsx';
+import FilterButtons from './components/FilterButtons.jsx';
 
 function App() {
   const [todoItems, setTodoItems] = useState([]);
   const [theme, setTheme] = useState('light');
+  const [activeTab, setActiveTab] = useState('all');
+
   return (
     <>
       <Header theme={theme} />
@@ -15,7 +18,7 @@ function App() {
         <div className="container centered">
           <Title theme={theme} onSetTheme={setTheme} />
 
-          <AddTodo onAddTodo={setTodoItems} />
+          <AddTodo onAddTodo={setTodoItems} activeTab={activeTab} />
           <section className="todo-list">
             <ul>
               {todoItems.map((todo, todoIndex) => {
@@ -35,8 +38,15 @@ function App() {
             <ControlTodoList
               todosLeft={todoItems.filter((todo) => todo.done !== true).length}
               onSetTodos={setTodoItems}
+              activeTab={activeTab}
+              onSetActiveTab={setActiveTab}
             />
           </section>
+          <FilterButtons
+            onSetTodos={setTodoItems}
+            activeTab={activeTab}
+            onSetActiveTab={setActiveTab}
+          />
         </div>
       </main>
     </>

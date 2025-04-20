@@ -77,8 +77,8 @@ a:visited {
 button {
   background: none;
   border: none;
-  width: 32px;
-  height: 32px;
+  width: 3.2rem;
+  height: 3.2rem;
   text-transform: capitalize;
   font-family: inherit;
   font-size: inherit;
@@ -132,7 +132,9 @@ main {
   color: #fff;
 }
 
-.btn-theme {
+.btn-theme:hover {
+  transition: all 0.7s;
+  transform: rotate(360deg);
 }
 
 .todo {
@@ -256,9 +258,18 @@ input:focus {
   width: fit-content;
 }
 
+.control-list button:active,
+.todo-new button:active {
+  color: hsl(220, 98%, 61%);
+}
+
 .btns-filter {
   display: flex;
   gap: 1.6rem;
+}
+
+.btns-filter button {
+  font-weight: 700;
 }
 
 .active {
@@ -275,12 +286,62 @@ footer {
   text-align: center;
 }
 
+footer a {
+  transition: all 0.3s;
+}
+
+footer a:hover {
+  color: hsl(220, 98%, 61%);
+}
+
 /* UTILITY CLASSES */
 .centered {
-  width: 80rem;
+  width: 100%;
+  max-width: 80rem;
   margin: 0 auto;
 }
 
 .hidden {
   display: none;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 50em) {
+  .container {
+    padding: 3.2rem;
+  }
+
+  .control-list {
+    position: static;
+  }
+
+  .todo-list ul {
+    padding: 0;
+  }
+
+  .btns-filter-mobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 37em) {
+  .control-list .btns-filter {
+    display: none;
+  }
+
+  .btns-filter-mobile {
+    display: flex;
+    justify-content: center;
+    gap: 1.6rem;
+    margin-top: 3.2rem;
+    padding: 2rem;
+    background-color: #fff;
+    box-shadow: 0 10px 3rem rgba(0 0 0 / 0.05);
+    border-radius: 8px;
+  }
+
+  .btns-filter-mobile button {
+    width: fit-content;
+    font-weight: 700;
+  }
 }
