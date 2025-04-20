@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import sunImage from './assets/images/icon-sun.svg';
 import moonImage from './assets/images/icon-moon.svg';
-import checkImage from './assets/images/icon-check.svg';
-import crossImage from './assets/images/icon-cross.svg';
+import AddTodo from './components/AddTodo.jsx';
+import Todo from './components/Todo.jsx';
+import ControlTodoList from './components/ControlTodoList.jsx';
 
 function App() {
+  const [todoItems, setTodoItems] = useState([]);
   return (
     <main>
       <div className="container centered">
@@ -14,44 +17,23 @@ function App() {
           </button>
         </div>
 
-        <div className="todo todo-new">
-          <button className="checkbox">
-            <img src={checkImage} alt="check image" />
-          </button>
-          <input type="text" className="todo-text" placeholder="Enter a task" />
-          <button className="btn-delete-todo">
-            <img src={crossImage} alt="X icon inside todo delete button" />
-          </button>
-        </div>
-
+        <AddTodo onAddTodo={setTodoItems} />
         <section className="todo-list">
           <ul>
-            <li className="todo todo-list-item">
-              <button className="checkbox">
-                <img src={checkImage} alt="check image" />
-              </button>
-              <input
-                type="text"
-                className="todo-text"
-                value="helllo"
-                readOnly
+            {todoItems.map((todo, todoIndex) => (
+              <Todo
+                key={todoIndex}
+                value={todo.value}
+                done={todo.done}
+                onSetTodoItems={setTodoItems}
+                index={todoIndex}
               />
-              <button className="btn-delete-todo">
-                <img src={crossImage} alt="X icon inside todo delete button" />
-              </button>
-            </li>
+            ))}
           </ul>
-          <div className="control-list">
-            <p>
-              <span className="todos-left">5</span> todos left
-            </p>
-            <div className="btns-filter">
-              <button className="active">all</button>
-              <button>active</button>
-              <button>completed</button>
-            </div>
-            <button className="btn-clear">clear completed</button>
-          </div>
+          <ControlTodoList
+            todosLeft={todoItems.length}
+            onSetTodos={setTodoItems}
+          />
         </section>
       </div>
     </main>

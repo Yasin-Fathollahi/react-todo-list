@@ -143,6 +143,7 @@ main {
 .todo-new {
   margin-bottom: 3.2rem;
   box-shadow: 0 10px 3rem rgba(0 0 0 / 0.05);
+  justify-content: space-between;
 }
 
 .checkbox {
@@ -157,19 +158,6 @@ main {
   width: 50%;
   height: 50%;
   display: none;
-}
-
-.checked {
-  background-image: linear-gradient(
-    to bottom right,
-    hsl(192, 100%, 67%),
-    hsl(280, 87%, 65%)
-  );
-  border: none;
-}
-
-.checked img {
-  display: block;
 }
 
 input {
@@ -207,10 +195,29 @@ input:focus {
   border-bottom: 1px solid hsl(233, 11%, 84%);
 }
 
+.todo-list-item.done input {
+  text-decoration: line-through;
+  color: hsl(236, 9%, 61%);
+}
+
+.todo-list-item.done .checkbox {
+  background-image: linear-gradient(
+    to bottom right,
+    hsl(192, 100%, 67%),
+    hsl(280, 87%, 65%)
+  );
+  border: none;
+}
+
+.todo-list-item.done .checkbox img {
+  display: block;
+}
+
 /* LIST CONTROL MENU */
 .control-list {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 2rem;
 }
 
