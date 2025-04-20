@@ -5,11 +5,21 @@ export default function Todo({ value, done = false, onSetTodoItems, index }) {
   function handleCompelete(index) {
     onSetTodoItems((prevTodoItems) => {
       const newTodoItems = [...prevTodoItems];
-      newTodoItems[0].done = !newTodoItems[index].done;
+      newTodoItems[index].done = !newTodoItems[index].done;
 
       return newTodoItems;
     });
   }
+
+  function deleteTodo(index) {
+    onSetTodoItems((prevTodoItems) => {
+      const newTodoItems = [...prevTodoItems];
+      newTodoItems.splice(index, 1);
+
+      return newTodoItems;
+    });
+  }
+
   return (
     <li>
       <div className={`todo todo-list-item ${done ? 'done' : ''}`}>
@@ -20,7 +30,10 @@ export default function Todo({ value, done = false, onSetTodoItems, index }) {
           <img src={checkImage} alt="check image" />
         </button>
         <input type="text" className="todo-text" value={value} readOnly />
-        <button className="btn-delete-todo">
+        <button
+          onClick={deleteTodo.bind(null, index)}
+          className="btn-delete-todo"
+        >
           <img src={crossImage} alt="X icon inside todo delete button" />
         </button>
       </div>

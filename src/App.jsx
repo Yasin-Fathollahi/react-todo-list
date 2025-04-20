@@ -1,42 +1,45 @@
 import { useState } from 'react';
-import sunImage from './assets/images/icon-sun.svg';
-import moonImage from './assets/images/icon-moon.svg';
+import Header from './components/Header.jsx';
 import AddTodo from './components/AddTodo.jsx';
 import Todo from './components/Todo.jsx';
 import ControlTodoList from './components/ControlTodoList.jsx';
+import Title from './components/Title.jsx';
 
 function App() {
   const [todoItems, setTodoItems] = useState([]);
+  const [theme, setTheme] = useState('light');
   return (
-    <main>
-      <div className="container centered">
-        <div className="title-theme-box">
-          <p className="list-title">todo</p>
-          <button className="btn-theme">
-            <img src={sunImage} alt="change theme button - sun" />
-          </button>
-        </div>
+    <>
+      <Header theme={theme} />
+      <main>
+        <div className="container centered">
+          <Title theme={theme} onSetTheme={setTheme} />
 
-        <AddTodo onAddTodo={setTodoItems} />
-        <section className="todo-list">
-          <ul>
-            {todoItems.map((todo, todoIndex) => (
-              <Todo
-                key={todoIndex}
-                value={todo.value}
-                done={todo.done}
-                onSetTodoItems={setTodoItems}
-                index={todoIndex}
-              />
-            ))}
-          </ul>
-          <ControlTodoList
-            todosLeft={todoItems.length}
-            onSetTodos={setTodoItems}
-          />
-        </section>
-      </div>
-    </main>
+          <AddTodo onAddTodo={setTodoItems} />
+          <section className="todo-list">
+            <ul>
+              {todoItems.map((todo, todoIndex) => {
+                if (!todo.hidden) {
+                  return (
+                    <Todo
+                      key={todoIndex}
+                      value={todo.value}
+                      done={todo.done}
+                      onSetTodoItems={setTodoItems}
+                      index={todoIndex}
+                    />
+                  );
+                }
+              })}
+            </ul>
+            <ControlTodoList
+              todosLeft={todoItems.filter((todo) => todo.done !== true).length}
+              onSetTodos={setTodoItems}
+            />
+          </section>
+        </div>
+      </main>
+    </>
   );
 }
 

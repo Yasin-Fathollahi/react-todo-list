@@ -94,9 +94,16 @@ button:hover {
 }
 
 header {
-  background-image: url('./assets/images/bg-desktop-light.jpg');
   background-size: cover;
   height: 40vh;
+}
+
+header.light {
+  background-image: url('./assets/images/bg-desktop-light.jpg');
+}
+
+header.dark {
+  background-image: url('./assets/images/bg-desktop-dark.jpg');
 }
 
 main {
@@ -174,6 +181,10 @@ input:focus {
   outline: none;
 }
 
+.btn-delete-todo {
+  display: none;
+}
+
 .btn-delete-todo img {
   width: 70%;
 }
@@ -183,16 +194,25 @@ input:focus {
   height: 50vh;
   background-color: #fff;
   box-shadow: 0 10px 3rem rgba(0 0 0 / 0.05);
-  overflow: hidden;
   display: flex;
   flex-direction: column;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
 }
+
 .todo-list ul {
   flex: 1 0;
+  padding-bottom: 6rem;
+  overflow: scroll;
 }
 
 .todo-list-item {
   border-bottom: 1px solid hsl(233, 11%, 84%);
+}
+
+.todo-list-item:hover .btn-delete-todo {
+  display: block;
 }
 
 .todo-list-item.done input {
@@ -219,6 +239,17 @@ input:focus {
   justify-content: space-between;
   align-items: center;
   padding: 2rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  /* border-top: 1px solid hsl(233, 11%, 84%); */
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.control-list p {
+  width: 12rem;
 }
 
 .control-list button {
@@ -248,4 +279,8 @@ footer {
 .centered {
   width: 80rem;
   margin: 0 auto;
+}
+
+.hidden {
+  display: none;
 }

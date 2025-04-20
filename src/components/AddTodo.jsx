@@ -10,7 +10,7 @@ export default function AddTodo({ onAddTodo }) {
   function handleAddTodo() {
     if (todoValue.length > 0) {
       onAddTodo((prevTodos) => {
-        return [{ value: todoValue, done: false }, ...prevTodos];
+        return [{ value: todoValue, done: false, hidden: false }, ...prevTodos];
       });
       setTodoValue('');
     }
