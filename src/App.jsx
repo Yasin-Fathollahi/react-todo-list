@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './components/Header.jsx';
 import AddTodo from './components/AddTodo.jsx';
 import Todo from './components/Todo.jsx';
@@ -7,9 +7,15 @@ import Title from './components/Title.jsx';
 import FilterButtons from './components/FilterButtons.jsx';
 
 function App() {
-  const [todoItems, setTodoItems] = useState([]);
+  const [todoItems, setTodoItems] = useState(() => {
+    return JSON.parse(localStorage.getItem('todos')) || [];
+  });
   const [theme, setTheme] = useState('light');
   const [activeTab, setActiveTab] = useState('all');
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todoItems));
+  }, [todoItems]);
 
   return (
     <>
