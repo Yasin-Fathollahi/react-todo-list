@@ -47,6 +47,7 @@
 :root {
   /* light mode */
   --color-Dark-gray: hsl(235, 19%, 35%);
+  --color-bright-blue: hsl(220, 98%, 61%);
 }
 
 * {
@@ -111,10 +112,7 @@ main {
 }
 
 .container {
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, 0);
+  transform: translate(0, -40%);
 }
 
 .title-theme-box {
@@ -160,7 +158,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid hsl(220, 98%, 61%);
+  border: 2px solid var(--color-bright-blue);
 }
 
 .checkbox img {
@@ -193,7 +191,7 @@ input:focus {
 
 /* todo-list */
 .todo-list {
-  height: 50vh;
+  height: 40rem;
   background-color: #fff;
   box-shadow: 0 10px 3rem rgba(0 0 0 / 0.05);
   display: flex;
@@ -206,7 +204,7 @@ input:focus {
 .todo-list ul {
   flex: 1 0;
   padding-bottom: 6rem;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .todo-list-item {
@@ -260,7 +258,7 @@ input:focus {
 
 .control-list button:active,
 .todo-new button:active {
-  color: hsl(220, 98%, 61%);
+  color: var(--color-bright-blue);
 }
 
 .btns-filter {
@@ -273,7 +271,7 @@ input:focus {
 }
 
 .active {
-  color: hsl(220, 98%, 61%);
+  color: var(--color-bright-blue);
 }
 
 #root + p {
@@ -282,8 +280,11 @@ input:focus {
 }
 
 footer {
-  margin-top: 3rem;
-  text-align: center;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: hsl(234, 39%, 85%);
 }
 
 footer a {
@@ -325,6 +326,9 @@ footer a:hover {
 }
 
 @media screen and (max-width: 37em) {
+  html {
+    font-size: 56%;
+  }
   .control-list .btns-filter {
     display: none;
   }
@@ -343,5 +347,31 @@ footer a:hover {
   .btns-filter-mobile button {
     width: fit-content;
     font-weight: 700;
+  }
+
+  footer {
+    margin-top: 0rem;
+  }
+  .container {
+    position: static;
+    transform: translate(0, -42vh);
+  }
+
+  .todo-list {
+    height: 40vh;
+  }
+
+  .todo,
+  .btns-filter-mobile,
+  .control-list {
+    padding: 1.2rem;
+  }
+
+  .btns-filter-mobile {
+    margin-top: 1.6rem;
+  }
+
+  .todo-new {
+    margin-bottom: 2.4rem;
   }
 }
