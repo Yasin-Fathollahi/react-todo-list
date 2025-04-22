@@ -10,12 +10,15 @@ function App() {
   const [todoItems, setTodoItems] = useState(() => {
     return JSON.parse(localStorage.getItem('todos')) || [];
   });
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(() => {
+    return JSON.parse(localStorage.getItem('theme')) || 'light';
+  });
   const [activeTab, setActiveTab] = useState('all');
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todoItems));
-  }, [todoItems]);
+    localStorage.setItem('theme', JSON.stringify(theme));
+  }, [todoItems, theme]);
 
   return (
     <>
